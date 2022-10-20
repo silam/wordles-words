@@ -5,20 +5,32 @@ import { useEffect, useState } from 'react';
 
 const URI = 'https://raw.githubusercontent.com/tabatkins/wordle-list/main/words'
 
-function Tile() {
+function Tile(props) {
   return (
     <div className="Tile">
-
+      {props.chr}
     </div>
   )
 }
 
 function Board() {
+
+
+  var rows = [], i = 0, len = 30;
+  while (++i <= len) rows.push(i);
+
   return(
-    <div>
-        <Tile></Tile><Tile></Tile>
-        <Tile></Tile>
-        <Tile></Tile>
+    <div className='Board'>
+        
+        {rows.map((i) => 
+          {
+              if ( i <= 5)
+                return <Tile key={i} chr='a'></Tile>
+          })
+        
+        }
+        
+
     </div>
     
 
@@ -33,7 +45,6 @@ function App() {
       const data = await fetch(URI);
       const words = await (await data.text()).split('\n');
       
-      console.log(words.length);
       const randomWord = words[Math.floor(Math.random() * words.length)]
       setSolution(randomWord);
     }

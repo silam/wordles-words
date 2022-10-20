@@ -7,8 +7,17 @@
   height: 40px;
   border: 1px solid black;
   margin: 2px;
+  text-align: center;
+  text-transform: capitalize;
+  vertical-align: middle;
+  justify-content: center;
+  
 }
 
+.Board {
+  display: flex;
+  direction: horizontal;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
